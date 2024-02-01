@@ -1,3 +1,4 @@
+import Input from '../Input'
 import { Button } from '../ui/button'
 
 const CourseInfo = () => {
@@ -5,11 +6,7 @@ const CourseInfo = () => {
     <div className='py-2'>
       <label>
         <p className='text-[20px]'>Course Title</p>
-        <br />
-        <input
-          type='text'
-          className='p-2 my-2 border-[2px] rounded-sm w-[90vw] border-cyan-500 focus:outline-none'
-        />
+        <Input />
       </label>
       <label>
         <p className='text-[20px]'>Course Description</p>
