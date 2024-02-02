@@ -23,10 +23,7 @@ const Header = () => {
           <div className='pt-5 font-bold text-3xl'>Add New Course</div>
           <div className='flex gap-10'>
             <div>
-              <Button className='bg-black w-[150px]'>
-                {' '}
-                Back to Dashboard{' '}
-              </Button>
+              <Button className='bg-black w-[150px]'>Back to Dashboard</Button>
             </div>
             <div>
               <Button className='bg-cyan-500 w-[150px]'> Save </Button>

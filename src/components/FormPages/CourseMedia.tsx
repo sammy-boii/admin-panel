@@ -6,11 +6,13 @@ import { Button } from '../ui/button'
 interface CourseMediaState {
   benefits: ReactNode[]
   prerequisites: ReactNode[]
+  skills: ReactNode[]
 }
 
 type CourseMediaAction =
   | { type: 'benefits' }
   | { type: 'prerequisites' }
+  | { type: 'skills' }
   | { type: 'default' }
 
 const addInputsReducer = (
@@ -31,6 +33,11 @@ const addInputsReducer = (
           <Input key={state.prerequisites.length} />
         ]
       }
+    case 'skills':
+      return {
+        ...state,
+        skills: [...state.skills, <Input key={state.skills.length} />]
+      }
     default:
       return state
   }
@@ -41,7 +48,8 @@ const CourseMedia = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [state, dispatch] = useReducer(addInputsReducer, {
     benefits: [<Input />],
-    prerequisites: [<Input />]
+    prerequisites: [<Input />],
+    skills: [<Input />]
   })
 
   const handleThumbnail = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -140,6 +148,15 @@ const CourseMedia = () => {
         size={25}
         onClick={() => dispatch({ type: 'prerequisites' })}
       />
+      <label>
+        <p className='text-[20px] w-screen'>
+          What skills will you be able to gain from this course?
+        </p>
+        {state.skills.map((input, index) => (
+          <div key={index}>{input}</div>
+        ))}
+      </label>
+      <CiSquarePlus size={25} onClick={() => dispatch({ type: 'skills' })} />
       <div className='mt-10 flex w-[90vw] justify-between'>
         <Button className='bg-black w-[150px]'>Back</Button>
         <Button className='bg-cyan-500  w-[150px]'>Save</Button>
